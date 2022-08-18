@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Cart from "./components/Cart/Cart";
+import Products from "./components/Products/Products";
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { useEffect } from "react";
+import { UseGlobalContext } from "./context";
+import CheckOut from "./components/CheckOutForm/CheckOut/CheckOut";
 
-function App() {
+
+
+
+const App = () => {
+
+  const {getProducts, fetchCart} = UseGlobalContext();
+  useEffect(() => {
+    getProducts()
+    fetchCart()
+  }, [])
+  
+  // console.log(cart)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Products/>}/>
+          <Route path='/cart' element={<Cart/>}/>
+          <Route path='/checkout' element={<CheckOut/>}/>
+        </Routes>
+    </BrowserRouter>
   );
 }
 
