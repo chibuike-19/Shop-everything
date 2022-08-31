@@ -12,7 +12,7 @@ const NavBar = () => {
     if(cart.total_items === 0 ){
       return 'hidden'
     }else{
-      return 'w-4 h-4 rounded-full text-xs text-white bg-red-600 absolute right-0 top-2 '
+      return 'w-4 h-4 rounded-full text-xs text-white bg-red-600 absolute right-0 top-2'
     }
   }
  
